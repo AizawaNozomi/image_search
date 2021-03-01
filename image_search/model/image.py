@@ -6,7 +6,7 @@ class Image(Document):
     tags = Keyword()
     
     class Index:
-        name = 'image'
+        name = 'image_base'
         settings = {
           "number_of_shards": 2,
         }

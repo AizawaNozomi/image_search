@@ -11,4 +11,7 @@ def save_image():
     res = {
         "openid": "112323"
     }
+
+    image = Image(url=url,tags=tags)
+    image.save()
     return jsonify(res)
