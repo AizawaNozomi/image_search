@@ -1,6 +1,4 @@
 from . import *
-from flask import jsonify
-
 
 @bp.route('/save', methods=["POST"])
 def save_image():
@@ -12,6 +10,6 @@ def save_image():
         "openid": "112323"
     }
 
-    image = Image(url=url,tags=tags)
-    image.save()
+    # image = Image(url=url,tags=tags)
+    # image.save()
     return jsonify(res)

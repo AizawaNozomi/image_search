@@ -3,8 +3,8 @@ from . import *
 
 class Image(Document):
     url = Text()
-    tags = Keyword()
-    
+    tags = Text(analyzer="whitespace" )
+
     class Index:
         name = 'image_base'
         settings = {
