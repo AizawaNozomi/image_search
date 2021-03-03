@@ -1,13 +1,17 @@
 from . import *
 
-@bp.route('/search', methods=["POST"])
-def image_search():
+@bp.route('/comple', methods=["POST"])
+def comple_searhc():
     form = request.form
     Keyword = form.get("keyword",type=str)
     searchdic = {
-        "query": {
-            "term": {
-            "tags": f"{Keyword.strip()}"
+        "size": 0,
+        "suggest": {
+            "article-suggester": {
+            "prefix": f"{Keyword.strip()}",
+            "completion": {
+                "field": "tag_completion"
+            }
             }
         }
     }
