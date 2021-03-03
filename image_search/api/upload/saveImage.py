@@ -5,11 +5,12 @@ def save_image():
     form = request.form
     url = form.get("url",type=str)
     tags = form.get("tags", type=str)
+    text = form.get("text", type=str)
     print(tags, url)
     res = {
         "openid": "112323"
     }
 
-    # image = Image(url=url,tags=tags)
-    # image.save()
+    image = Image(url=url, tags=tags, text=text)
+    image.save()
     return jsonify(res)
