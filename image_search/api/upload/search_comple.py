@@ -1,13 +1,12 @@
 from . import *
 
 @bp.route('/comple', methods=["POST"])
-def comple_searhc():
+def comple_search():
     form = request.form
     Keyword = form.get("keyword",type=str)
     searchdic = {
-        "size": 0,
         "suggest": {
-            "article-suggester": {
+            "tagsuggester": {
             "prefix": f"{Keyword.strip()}",
             "completion": {
                 "field": "tag_completion"
@@ -20,16 +19,7 @@ def comple_searhc():
 
     response = s.execute()
     res_list = []
-    for hit in response:
-        item  ={
-            "url":hit.url,
-            "tags":hit.tags
-        }
-        res_list.append(item)
-        print(hit.tags)
-
-    res = {
-        "openid": "112323"
-    }
-
+    response = response.suggest.tagsuggester[0].options
+    for item in response:
+        res_list.append(item.text)
     return jsonify(res_list)

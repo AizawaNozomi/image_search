@@ -9,3 +9,5 @@ bp = Blueprint("Image", __name__)
 from .saveImage import save_image
 
 from .search_image import  image_search
+
+from .search_comple import comple_search
